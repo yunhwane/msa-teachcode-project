@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module version="4">
-  <component name="SonarLintModuleSettings">
-    <option name="uniqueId" value="3bc87726-937f-46da-af3a-67715fc75b2c" />
+  <component name="AdditionalModuleElements">
+    <content url="file://$MODULE_DIR$/../../teachcode-discovery-service" dumb="true">
+      <excludeFolder url="file://$MODULE_DIR$/../../teachcode-discovery-service/.idea" />
+    </content>
   </component>
 </module>
