@@ -12,9 +12,11 @@ import org.springframework.http.ResponseEntity;
 public class AccountController {
 
     private final AccountService accountService;
+    private final EmailService emailService;
 
-    public AccountController(AccountService accountService) {
+    public AccountController(AccountService accountService, EmailService emailService) {
         this.accountService = accountService;
+        this.emailService = emailService;
     }
 
     @PostMapping()
@@ -33,6 +35,12 @@ public class AccountController {
         }
 
         return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse<>(true, null, null));
+    }
+
+    @PostMapping("/verify-email")
+    public ResponseEntity<?> verifyEmail(@RequestBody VerifyEmailRequest verifyEmailRequest) {
+        emailService.verifyEmail(verifyEmailRequest);
+        return ResponseEntity.status(HttpStatus.OK).body(ApiResponse.success("이메일 전송되었습니다. 이메일을 확인해주세요."));
     }
 
 }

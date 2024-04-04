@@ -23,7 +23,6 @@ public class Account implements Serializable {
 
     @Column(name = "account_id")
     private String accountId;
-
     private String name;
     private String nickName;
     private String email;

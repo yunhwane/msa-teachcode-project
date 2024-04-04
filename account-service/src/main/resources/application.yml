@@ -13,8 +13,11 @@ spring:
       ddl-auto: create
     show-sql: true
     open-in-view: true
-
-
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
 eureka:
   instance:
@@ -25,3 +28,6 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka
+
+topic:
+  email-verifications: email-verifications
