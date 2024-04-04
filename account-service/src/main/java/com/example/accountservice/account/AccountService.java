@@ -15,8 +15,13 @@ public class AccountService {
 
 
     @Transactional
-    public void addAccount(final AddAccountRequest addAccountRequest) {
-        final Account account = new Account(addAccountRequest.name(), addAccountRequest.nickName(), addAccountRequest.email(), addAccountRequest.password(), addAccountRequest.emailReceptionPolicy());
+    public void addAccount(final AddAccountRequest request) {
+        final Account account = new Account(request.name(), request.nickName(), request.email(), request.password(), request.emailReceptionPolicy());
         accountPort.save(account);
+    }
+
+    @Transactional(readOnly = true)
+    public boolean checkEmailDuplication(CheckEmailDuplicationRequest request) {
+        return accountPort.findAccountByEmail(request.email()).isPresent();
     }
 }

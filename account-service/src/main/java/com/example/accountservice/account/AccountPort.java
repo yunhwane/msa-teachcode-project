@@ -1,5 +1,8 @@
 package com.example.accountservice.account;
 
+import java.util.Optional;
+
 public interface AccountPort {
-    public void save(final Account account);
+    void save(final Account account);
+    Optional<Account> findAccountByEmail(String email);
 }
